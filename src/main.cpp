@@ -17,6 +17,8 @@ inline T get_from_offset(void* base, unsigned int offset) {
 };
 #endif
 
+#ifndef GEODE_IS_IOS
+
 // get timestamp, but with custom keybinds (or similar mods) compatibility
 std::uint64_t getTimestampCompat() {
 	auto event = ExtendedCCKeyboardDispatcher::getCurrentEventInfo();
@@ -27,6 +29,8 @@ std::uint64_t getTimestampCompat() {
 	auto extendedInfo = static_cast<ExtendedCCEvent*>(event);
 	return extendedInfo->getTimestamp();
 }
+
+#endif
 
 #ifdef GEODE_IS_WINDOWS
 void CustomGJBaseGameLayer::queueButton_custom(int btnType, bool push, bool secondPlayer) {
