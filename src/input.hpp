@@ -22,8 +22,6 @@ public:
 };
 
 
-#ifndef GEODE_IS_IOS
-
 #include <Geode/modify/CCKeyboardDispatcher.hpp>
 
 struct ExtendedCCKeyboardDispatcher : geode::Modify<ExtendedCCKeyboardDispatcher, cocos2d::CCKeyboardDispatcher> {
@@ -43,8 +41,6 @@ struct ExtendedCCKeyboardDispatcher : geode::Modify<ExtendedCCKeyboardDispatcher
 
 	bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool isKeyDown, bool isKeyRepeat);
 };
-
-#endif
 
 // all this has to do is add the timestamp to the event
 struct ExtendedCCTouchDispatcher : geode::Modify<ExtendedCCTouchDispatcher, cocos2d::CCTouchDispatcher> {
