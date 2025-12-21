@@ -55,7 +55,11 @@ void CustomGJBaseGameLayer::queueButton(int btnType, bool push, bool secondPlaye
 	auto timeRelativeBegin = fields->m_timeBeginMs;
 
 	if (!inputTimestamp) {
+#ifdef GEODE_IS_IOS
+  inputTimestamp = platform_get_time();
+#else
 		inputTimestamp = getTimestampCompat();
+#endif
 	}
 
 	auto currentTime = inputTimestamp - timeRelativeBegin;
