@@ -19,6 +19,7 @@ inline T get_from_offset(void* base, unsigned int offset) {
 
 // get timestamp, but with custom keybinds (or similar mods) compatibility
 std::uint64_t getTimestampCompat() {
+#ifndef GEODE_IS_IOS
 	auto event = ExtendedCCKeyboardDispatcher::getCurrentEventInfo();
 	if (!event) {
 		return 0;
@@ -26,6 +27,9 @@ std::uint64_t getTimestampCompat() {
 
 	auto extendedInfo = static_cast<ExtendedCCEvent*>(event);
 	return extendedInfo->getTimestamp();
+#else
+ return platform_get_time();
+#endif
 }
 
 #ifdef GEODE_IS_WINDOWS
