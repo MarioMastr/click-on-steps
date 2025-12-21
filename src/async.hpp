@@ -15,7 +15,10 @@ struct AsyncUILayer : geode::Modify<AsyncUILayer, UILayer> {
 		std::uint64_t m_lastTimestamp{0ull};
 	};
 
+#ifndef GEODE_IS_IOS
 	void handleKeypress(cocos2d::enumKeyCodes, bool);
+#endif
+
 	bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
 	void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
 	void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
