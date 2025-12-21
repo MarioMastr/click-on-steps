@@ -1,5 +1,10 @@
+#include <Geode/platform/cplatform.h>
 #define CommentType CommentTypeDummy
+#ifdef GEODE_IS_IOS
+#import <UIKit/UIKit.h>
+#else
 #import <Cocoa/Cocoa.h>
+#endif
 #include <objc/runtime.h>
 #undef CommentType
 
@@ -15,7 +20,7 @@ std::uint64_t platform_get_time() {
 	return clock_gettime_nsec_np(CLOCK_UPTIME_RAW) / 1'000'000;
 }
 
-@interface EAGLView : NSOpenGLView
+@interface EAGLView : GEODE_MACOS(NSOpenGLView) GEODE_IOS(UIView)
 @end
 
 #ifdef GEODE_IS_MACOS
