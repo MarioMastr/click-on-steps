@@ -67,7 +67,7 @@ void mouseUpExec(EAGLView* self, SEL sel, NSEvent* event) {
 
 #ifdef GEODE_IS_IOS
 static IMP touchesBeganOIMP;
-void touchesBegan(EAGLView* self, SEL sel, NSSet* touches, NSEvent* event) {
+void touchesBegan(EAGLView* self, SEL sel, NSSet* touches, UIEvent* event) {
 	auto timestamp = static_cast<std::uint64_t>([event timestamp] * 1000.0);
 	ExtendedCCTouchDispatcher::setTimestamp(timestamp);
 
@@ -75,7 +75,7 @@ void touchesBegan(EAGLView* self, SEL sel, NSSet* touches, NSEvent* event) {
 }
 
 static IMP touchesMovedOIMP;
-void touchesMoved(EAGLView* self, SEL sel, NSSet* touches, NSEvent* event) {
+void touchesMoved(EAGLView* self, SEL sel, NSSet* touches, UIEvent* event) {
 	auto timestamp = static_cast<std::uint64_t>([event timestamp] * 1000.0);
 	ExtendedCCTouchDispatcher::setTimestamp(timestamp);
 
@@ -83,7 +83,7 @@ void touchesMoved(EAGLView* self, SEL sel, NSSet* touches, NSEvent* event) {
 }
 
 static IMP touchesEndedOIMP;
-void touchesEnded(EAGLView* self, SEL sel, NSSet* touches, NSEvent* event) {
+void touchesEnded(EAGLView* self, SEL sel, NSSet* touches, UIEvent* event) {
 	auto timestamp = static_cast<std::uint64_t>([event timestamp] * 1000.0);
 	ExtendedCCTouchDispatcher::setTimestamp(timestamp);
 
@@ -91,7 +91,7 @@ void touchesEnded(EAGLView* self, SEL sel, NSSet* touches, NSEvent* event) {
 }
 
 static IMP touchesCancelledOIMP;
-void touchesCancelled(EAGLView* self, SEL sel, NSSet* touches, NSEvent* event) {
+void touchesCancelled(EAGLView* self, SEL sel, NSSet* touches, UIEvent* event) {
 	auto timestamp = static_cast<std::uint64_t>([event timestamp] * 1000.0);
 	ExtendedCCTouchDispatcher::setTimestamp(timestamp);
 
