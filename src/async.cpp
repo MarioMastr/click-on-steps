@@ -3,6 +3,8 @@
 
 #define DEBUG_PROCESSING false
 
+#ifndef GEODE_IS_IOS
+
 void AsyncUILayer::handleKeypress(cocos2d::enumKeyCodes key, bool down) {
 	auto event = ExtendedCCKeyboardDispatcher::getCurrentEventInfo();
 	if (!event) {
@@ -17,6 +19,8 @@ void AsyncUILayer::handleKeypress(cocos2d::enumKeyCodes key, bool down) {
 
 	m_fields->m_lastTimestamp = 0ull;
 }
+
+#endif
 
 bool AsyncUILayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event) {
 	if (!event) {
